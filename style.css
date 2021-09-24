@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+* {
+    padding: 0%;
+    margin: 0%;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+body {
+    background: linear-gradient(90deg, rgba(218,96,162,1) 0%, rgba(232,190,62,1) 50%, rgba(144,201,214,1) 100%);
+}
+header, form, footer {
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: 'Press Start 2P', cursive;
+    margin: 3% 1% 0% 1%;
+}
+#rainbow {
+    background-clip: border-box;
+    text-align: center;
+    font-size: 3.5rem;
+    max-width: 100%;
+    text-transform: lowercase;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 3%;
+	background: linear-gradient(90deg, rgba(209,62,113,1) 35%, rgba(144,83,161,1) 39%, rgba(41,117,140,1) 43%, rgba(40,102,58,1) 48%, rgba(222,175,71,1) 53%, rgba(226,114,22,1) 57%, rgba(221,173,67,1) 80%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    padding: 1%;
+}
+h2, h3 {
+    text-align: right;
+    max-width: 25rem;
+}
+input, select, .btn {
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 200%
+}
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    line-height: 1.4;
+}
+.holder {
+    margin: 1%;
+
+}
+.holder img {
+    height: 30rem;
+    max-width: 30rem;
+    object-fit: cover;
+}
+#sorry {
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    form, main {
+        display: flex;
+        flex-direction: column;              
+    }
+    form {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    main {
+        align-items: center;
+    }
+}
+@media (max-width: 400px) {
+    h1 {
+        font-size: 3rem;
+    }
+    .holder img {
+        max-height: 30rem;
+        max-width: 25rem;
+    }
+}
+@media (max-width: 340px) {
+    .holder img {
+        max-width: 20rem;
+    }
+    h2, h3 {
+        max-width: 20rem;
+    }
+}

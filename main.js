@@ -7,7 +7,6 @@ placeHolder.remove();
 let next = document.querySelector("#next");
 let prev = document.querySelector("#prev");
 let reset = document.querySelector("#reset");
-let rainbow = document.querySelector("#rainbow");
 
 const url = "https://pixabay.com/api/?";
 const apiKey = "23474825-b19c59a799dccd22ee2b7f6be";
@@ -80,6 +79,7 @@ async function getSearch(currentPage) {
         prev.hidden = true;
     }
     else {
+
         results.hits.forEach(result => {
             let container = placeHolder.cloneNode(true);
 
@@ -97,10 +97,10 @@ async function getSearch(currentPage) {
 
             main.appendChild(container);          
 
-            next.hidden = false;
-            prev.hidden = false;
-
         });
+
+        next.hidden = false;
+        prev.hidden = false;
 
         if (currentPage === 1) {
             prev.disabled = true;

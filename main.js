@@ -10,8 +10,16 @@ let reset = document.querySelector("#reset");
 
 const url = "https://pixabay.com/api/?";
 const apiKey = "23474825-b19c59a799dccd22ee2b7f6be";
-
 let currentPage = 0;
+let sneak = false;
+
+let params = new URLSearchParams({
+    key: apiKey,
+    page: currentPage,
+    per_page: 10
+});
+
+
 if (currentPage === 0) {
     next.hidden = true;
     prev.hidden = true;
@@ -21,19 +29,21 @@ form.onsubmit = event => {
     event.preventDefault();
     currentPage = 1;
     removeAllChildren(main);
-
+    sneak = false;
     getSearch(currentPage);
 }
 
 prev.onclick = event => {
     removeAllChildren(main);
     currentPage--;
+    sneak = true;
     getSearch(currentPage);
 }
 
 next.onclick = event =>{
     removeAllChildren(main);
     currentPage++;
+    sneak = true;
     getSearch(currentPage);
 }
 reset.onclick = event => {
@@ -42,23 +52,20 @@ reset.onclick = event => {
     prev.hidden = true;
 }
 
-
 async function getSearch(currentPage) {
-    let text = form.elements.search.value;
-    let color = form.elements.color.value;
-    colorCustomizer(color);
+    params.set('page', currentPage);
 
-    let params = new URLSearchParams({
-        key: apiKey,
-        page: currentPage,
-        per_page: 10
-    });
+    if(!sneak) {
+        let text = form.elements.search.value;
+        let color = form.elements.color.value;
+        colorCustomizer(color);
 
-    if (text !== "") {
-        params.append("q", text);
-    }
-    if (color !== "any") {
-        params.append("colors", color)
+        if (text !== "") {
+            params.set("q", text);
+        }
+        if (color !== "any") {
+            params.set("colors", color)
+        }
     }
 
     const response = await fetch(url + params);
@@ -118,7 +125,6 @@ async function getSearch(currentPage) {
     }
 
 }
-
 
 function removeAllChildren(parent) {
     while (parent.firstChild) {

@@ -15,6 +15,11 @@ let currentPage = 0;
 // så man inte kan lura sökmotorn med next och prev
 let sneak = false;
 
+let params = new URLSearchParams({
+    key: apiKey,
+    page: currentPage,
+    per_page: 10
+});
 
 if (currentPage === 0) {
     next.hidden = true;
@@ -49,11 +54,7 @@ reset.onclick = event => {
 }
 
 async function getSearch(currentPage) {
-    let params = new URLSearchParams({
-        key: apiKey,
-        page: currentPage,
-        per_page: 10
-    });
+
 
     params.set('page', currentPage);
 
@@ -68,6 +69,8 @@ async function getSearch(currentPage) {
             params.set("colors", color)
         }
     }
+
+    console.log(params.toString());
 
     const response = await fetch(url + params);
     const results = await response.json();

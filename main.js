@@ -72,8 +72,6 @@ async function getSearch(currentPage) {
         }
     }
 
-    console.log(params.toString());
-
     const response = await fetch(url + params);
     const results = await response.json();
 

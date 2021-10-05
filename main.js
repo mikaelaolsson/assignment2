@@ -11,13 +11,9 @@ let reset = document.querySelector("#reset");
 const url = "https://pixabay.com/api/?";
 const apiKey = "23474825-b19c59a799dccd22ee2b7f6be";
 let currentPage = 0;
-let sneak = false;
 
-let params = new URLSearchParams({
-    key: apiKey,
-    page: currentPage,
-    per_page: 10
-});
+// så man inte kan lura sökmotorn med next och prev
+let sneak = false;
 
 
 if (currentPage === 0) {
@@ -53,13 +49,18 @@ reset.onclick = event => {
 }
 
 async function getSearch(currentPage) {
+    let params = new URLSearchParams({
+        key: apiKey,
+        page: currentPage,
+        per_page: 10
+    });
+
     params.set('page', currentPage);
 
     if(!sneak) {
         let text = form.elements.search.value;
         let color = form.elements.color.value;
         colorCustomizer(color);
-
         if (text !== "") {
             params.set("q", text);
         }

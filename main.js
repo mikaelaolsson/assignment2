@@ -49,6 +49,8 @@ next.onclick = event =>{
 }
 reset.onclick = event => {
     removeAllChildren(main);
+    params.delete("colors");
+    params.delete("q");
     next.hidden = true;
     prev.hidden = true;
 }
